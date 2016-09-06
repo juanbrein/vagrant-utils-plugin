@@ -10,7 +10,7 @@ module VagrantPlugins
         args.shift
         with_target_vms do |machine|
           env = machine.action(:ssh_run,
-                                ssh_run_command: "rake #{args}",)
+                               :ssh_run_command => "rake #{args.join(' ')}")
           exit_status = env[:ssh_run_exit_status] || 0
           return exit_status
         end
